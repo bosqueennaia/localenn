@@ -8,6 +8,7 @@ public class DataCart {
     private String PRICE;
     private String SIZE;
 
+
     public DataCart(String ID, String BRAND, String TYPE, String SEX, String PRICE, String SIZE) {
         this.ID = ID;
         this.BRAND = BRAND;
@@ -17,27 +18,51 @@ public class DataCart {
         this.SIZE = SIZE;
     }
 
-    public String getID() { return ID; }
+    public String getID() {
+        return ID;
+    }
 
-    public void setID(String ID) { this.ID = ID; }
+    public void setID(String ID) {
+        this.ID = ID;
+    }
 
-    public String getBRAND() { return BRAND; }
+    public String getBRAND() {
+        return BRAND;
+    }
 
-    public void setBRAND(String BRAND) { this.BRAND = BRAND; }
+    public void setBRAND(String BRAND) {
+        this.BRAND = BRAND;
+    }
 
-    public String getTYPE() { return TYPE; }
+    public String getTYPE() {
+        return TYPE;
+    }
 
-    public void setTYPE(String TYPE) { this.TYPE = TYPE; }
+    public void setTYPE(String TYPE) {
+        this.TYPE = TYPE;
+    }
 
-    public String getSEX() { return SEX; }
+    public String getSEX() {
+        return SEX;
+    }
 
-    public void setSEX(String SEX) { this.SEX = SEX; }
+    public void setSEX(String SEX) {
+        this.SEX = SEX;
+    }
 
-    public String getPRICE() { return PRICE; }
+    public String getPRICE() {
+        return PRICE;
+    }
 
-    public void setPRICE(String PRICE) { this.PRICE = PRICE; }
+    public void setPRICE(String PRICE) {
+        this.PRICE = PRICE;
+    }
 
-    public String getSIZE() { return SIZE; }
+    public String getSIZE() {
+        return SIZE;
+    }
 
-    public void setSIZE(String SIZE) { this.SIZE = SIZE; }
+    public void setSIZE(String SIZE) {
+        this.SIZE = SIZE;
+    }
 }

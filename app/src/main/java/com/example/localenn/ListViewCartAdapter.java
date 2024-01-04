@@ -13,10 +13,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
 public class ListViewCartAdapter extends BaseAdapter {
-    private List<dataCart> listCart;
+    private List<DataCart> listCart;
     private Context context;
-    private SQLiteHeper helper;
+    private SQLiteHelper helper;
 
     private TextView
             od_brand,
@@ -26,25 +28,32 @@ public class ListViewCartAdapter extends BaseAdapter {
             od_price;
 
     private LinearLayout linear;
-    private ImageView hapus;
+    private ImageView  hapus;
 
-    public ListViewCartAdapter(list<DataCart> listCart, Context context) {
+    public ListViewCartAdapter(List<DataCart> listCart, Context context) {
         this.listCart = listCart;
         this.context = context;
     }
 
-    @Override
-    public int getCount() {return listCart.size(); }
 
     @Override
-    public Object getItem(int positon) { return null; }
+    public int getCount() {
+        return listCart.size();
+    }
 
     @Override
-    public Object getItemId(int position) { return 0; }
+    public Object getItem(int positon) {
+        return null;
+    }
 
     @Override
-    public View getview(int position, View convertView, ViewGroup parent) {
-        View v = LayoutInflater.from(context).inflate(R.layout.item_order), root:null);
+    public long getItemId(int position) {
+        return 0;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        View v = LayoutInflater.from(context).inflate(R.layout.item_order, null);
 
         od_brand = v.findViewById(R.id.od_brand);
         od_type = v.findViewById(R.id.od_type);
@@ -58,17 +67,17 @@ public class ListViewCartAdapter extends BaseAdapter {
 
         od_brand.setText("Brand : "+listCart.get(position).getBRAND());
         od_type.setText("Type : "+listCart.get(position).getTYPE());
-        od_sex.setText("SEX : "+listCart.get(position).getSEX());
+        od_sex.setText("Sex : "+listCart.get(position).getSEX());
         od_size.setText("Size : "+listCart.get(position).getSIZE());
         od_price.setText("Price : "+listCart.get(position).getPRICE());
 
-        linear.setOnClickListener(new View.OnClickListener() {
+        linear.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
                 Intent it = new Intent(context, FormData.class);
                 it.putExtra("ID", listCart.get(position).getID());
                 it.putExtra("BRAND", listCart.get(position).getBRAND());
-                it.putExtra("TYPE", listCart.get(position). getTYPE());
+                it.putExtra("TYPE", listCart.get(position).getTYPE());
                 it.putExtra("SEX", listCart.get(position).getSEX());
                 it.putExtra("SIZE", listCart.get(position).getSIZE());
                 it.putExtra("PRICE", listCart.get(position).getPRICE());
@@ -84,7 +93,7 @@ public class ListViewCartAdapter extends BaseAdapter {
             public void onClick(View v) {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
 
-                alertDialog.setMessage("Apakah anda ingin menghapus item ini?")
+                alertDialog.setMessage("Apakah anda ingin menhapus item ini?")
                         .setPositiveButton("YA", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int which) {
@@ -92,7 +101,7 @@ public class ListViewCartAdapter extends BaseAdapter {
                                 if (isDelete> 0){
                                     Toast.makeText(context, "Data Successfully Deleted", Toast.LENGTH_LONG).show();
                                 }else {
-                                    Toast.makeText(context, "Data Not Deleted", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, "Data Not Deleted", Toast.LENGTH_LONG).show();
                                 }
                             }
                         }).setNegativeButton("TIDAK", new DialogInterface.OnClickListener() {
@@ -101,9 +110,11 @@ public class ListViewCartAdapter extends BaseAdapter {
                                 dialogInterface.dismiss();
                             }
                         });
-                        alertDialog.show();
-             }
+                alertDialog.show();
+
+            }
         });
 
+        return v;
     }
 }

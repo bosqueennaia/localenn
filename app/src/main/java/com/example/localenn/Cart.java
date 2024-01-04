@@ -1,10 +1,12 @@
 package com.example.localenn;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import android.database.Cursor;
 import android.os.Bundle;
-import android.widget.ListView;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
@@ -23,19 +25,20 @@ public class Cart extends AppCompatActivity {
         list_view = findViewById(R.id.cart_list_view);
         refresh = findViewById(R.id.refresh);
 
-        refresh.setOnRefreshListener(new  SwipeRefreshLayout.OnRefreshListener() {
+        refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 menampilkanData();
             }
         });
 
-        helper = new  SQLiteHelper(this);
+        helper = new SQLiteHelper(this);
 
         menampilkanData();
     }
 
-    private void menampilkanData() {
+
+    private void menampilkanData(){
         listCart.clear();
         Cursor res = helper.getDataAll();
         refresh.setRefreshing(true);
@@ -56,8 +59,9 @@ public class Cart extends AppCompatActivity {
                     price));
 
         }
-        adapter = new ListViewCartAdapter(listCart, Cart.this);
+        adapter = new ListViewCartAdapter(listCart,Cart.this);
         list_view.setAdapter(adapter);
         refresh.setRefreshing(false);
+
     }
 }

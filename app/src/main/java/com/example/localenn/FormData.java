@@ -35,10 +35,10 @@ public class FormData extends AppCompatActivity {
         psnSize = findViewById(R.id.psnSize);
         buttonConfirm = findViewById(R.id.confirmData);
 
-        helper = new  SQLiteHelper(this);
+        helper = new SQLiteHelper(this);
 
         Bundle bundle = getIntent().getExtras();
-        if(bundle =/ null){
+        if (bundle != null) {
             //getSupportActionBar().setTitle("Ubah Data");
 
             id = bundle.getString("ID");
@@ -56,7 +56,7 @@ public class FormData extends AppCompatActivity {
             psnSize.setText(size);
 
         } //else {
-            //getSupportActionBar().setTitle("Tambah Data");
+        //getSupportActionBar().setTitle("Tambah Data");
         //}
 
         buttonConfirm.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +84,7 @@ public class FormData extends AppCompatActivity {
                     psnSize.setError("Must be filled");
                     psnSize.requestFocus();
                 } else {
-                    if(pilih.equals("Tambah")) {
+                    if (pilih.equals("Tambah")) {
                         boolean isInsert = helper.insertData(brand,
                                 type,
                                 sex,
@@ -122,10 +122,19 @@ public class FormData extends AppCompatActivity {
                             finish();
                         }
                     }
-                    )
                 }
             }
-        }
-    });
+        });
+
+    }
+    private void kosong() {
+        psnBrand.setText(null);
+        psnType.setText(null);
+        psnSex.setText(null);
+        psnPrice.setText(null);
+        psnSize.setText(null);
+    }
+}
+
 
 

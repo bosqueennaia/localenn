@@ -27,7 +27,7 @@ public class DetailShirt extends AppCompatActivity {
         detDesc = findViewById(R.id.desc);
         detGambar = findViewById(R.id.det_img);
 
-        // Foto Pakaian
+        //Foto Pakaian
         Bundle bundle = getIntent().getExtras();
         FotoPakaian = bundle.getInt("foto_pakaian");
         //FotoPakaian = bundle.getInt(String.valueof("foto_pakaian"));
@@ -46,11 +46,16 @@ public class DetailShirt extends AppCompatActivity {
 
     }
 
+    private void setDataActivity(String namaMerk, String namaJenis, String namaPrice, String namaDesc) {
+        detMerk.setText(namaMerk);
+        detJenis.setText(namaJenis);
+        detPrice.setText(namaPrice);
+        detDesc.setText(namaDesc);
+    }
+
     public void addCart(View view) {
         Intent it = new Intent(DetailShirt.this, FormData.class);
         startActivity(it);
     }
-
-}
 
 }
