@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "localenn"
+rootProject.name = "My Projek MAP"
 include(":app")
